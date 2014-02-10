@@ -2,6 +2,7 @@ var expect = require('expect.js');
 var Mocha  = require('mocha');
 
 var Base = require('../lib/base.js');
+var ID = require('../lib/identifiers.js');
 
 describe('base.js', function() {
     
@@ -26,5 +27,36 @@ describe('base.js', function() {
 	    expect(base.getSumBit(1)).to.be.eql(base._b*2+1) // 11
 	    expect(base.getSumBit(2)).to.be.eql(base._b*3+3) // 18
 	});
+    });
+
+    describe('getInterval', function(){
+	it('should return an empty interval at lvl 0', function(){
+	    var base = new Base(3);
+	    var id1 = new ID(17,[0,0],[0,0]); // [1,1]
+	    var id2 = new ID(31,[0,0],[0,0]); // [1,15]
+	    expect(base.getInterval(id1,id2,0)).to.be.below(0);
+	});
+	
+	it('should return an interval at level 1 of 13', function(){
+	    var base = new Base(3);
+	    var id1 = new ID(17,[0,0],[0,0]); // [1,1]
+	    var id2 = new ID(31,[0,0],[0,0]); // [1,15]
+	    expect(base.getInterval(id1,id2,1)).to.be.eql(13);
+	});
+
+	it('should return an interval at level 1 of 14', function(){
+	    var base = new Base(3);
+	    var id1 = new ID(1,[0],[0]); // [1]
+	    var id2 = new ID(31,[0,0],[0,0]); // [1,15]
+	    expect(base.getInterval(id1,id2,1)).to.be.eql(14);
+	});
+
+	it('should return an interval at level 1 of 11', function(){
+	    var base = new Base(3);
+	    var id1 = new ID(20,[0,0],[0,0]); // [1,4] precedes the [1,3]
+	    var id2 = new ID(19,[0,0],[0,0]); // [1,3] 
+	    expect(base.getInterval(id1,id2,1)).to.be.eql(11);
+	});
+
     });
 });
