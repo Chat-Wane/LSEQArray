@@ -1,7 +1,7 @@
 var expect = require('expect.js');
 var Mocha  = require('mocha');
 
-var ID = require('../lib/identifiers.js');
+var ID = require('../lib/identifier.js');
 
 
 // using a departure base value of 3 bits

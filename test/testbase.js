@@ -2,7 +2,7 @@ var expect = require('expect.js');
 var Mocha  = require('mocha');
 
 var Base = require('../lib/base.js');
-var ID = require('../lib/identifiers.js');
+var ID = require('../lib/identifier.js');
 
 describe('base.js', function() {
     
