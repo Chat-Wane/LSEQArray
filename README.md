@@ -12,7 +12,8 @@ without having to manage the difficult task of solving conflict resolution.
 var LSEQArray = require('lseqarray');
 
 // #1 creating the array
-var lseqArray = new LSEQArray();
+// site: our unique site identifier
+var lseqArray = new LSEQArray(site);
 
 // #2a inserting an element at the targeted index
 // ei: a couple {_e: the element, _i: its unique identifier}
@@ -28,7 +29,7 @@ var i = lseqArray.remove(0);
 
 // #3b deleting the element with its unique identifier "ri"
 // ri: the unique identifier of the element to delete
-lseqArray.applyInsert(ri);
+lseqArray.applyRemove(ri);
 ```
 
 ## Example
