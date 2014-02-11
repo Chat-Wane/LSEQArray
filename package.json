@@ -1,0 +1,26 @@
+{
+    "name": "lseqarray",
+    "version": "0.1.0",
+    "author": "Chat-Wane <grumpy.chat.wane@gmail.com>",
+    "description": "A data structure for distributed arrays using the LSEQ allocation strategy.",
+    "main": "./lib/lseqarray.js",
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/chat-wane/LSEQArray.git"
+    },
+    "keywords": [
+	"distributed structure",
+	"CRDT",
+	"LSEQ",
+	"array",
+	"vector"
+    ],
+    "devDependencies": {
+	"expect.js":  "0.2.x",
+	"mocha":  "1.17.x"
+    },
+    "license": "MIT",
+    "engines": {
+	"node": ">=0.10.25"
+    }
+}
