@@ -1,7 +1,7 @@
 var expect = require('expect.js');
 var Mocha  = require('mocha');
 
-var S = require('../lib/strategies.js');
+var S = new (require('../lib/strategy.js'))(10);
 var ID = require('../lib/identifier.js');
 var Base = new (require('../lib/base.js'))(3);
 
