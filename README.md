@@ -1,10 +1,16 @@
 # LSEQArray
 
-<i>Keywords: distributed systems, collaborative editing, CRDT, allocation strategy, unique identifiers</i>
+<i>Keywords: distributed systems, collaborative editing, CRDT, LSEQ allocation strategy, unique identifiers</i>
 
 This project aims to provide an implementation of a CRDT-based array using the
 allocation strategy LSEQ. Thus, the array structure allows distributed updates
 without having to manage the difficult task of solving conflict resolution.
+
+## Installation
+
+```
+$ npm install lseqarray
+```
 
 ## Usage
 
@@ -30,15 +36,22 @@ var i = lseqArray.remove(0);
 // #3b deleting the element with its unique identifier "ri"
 // ri: the unique identifier of the element to delete
 lseqArray.applyRemove(ri);
+
+// #4 accessing the length of the array
+var length = lseqArray.length;
 ```
 
 ## Example
 
-<i>To come...</i>
+<i>Incoming...</i>
 
 ## Others
 
 In this implementations, each cell of the javascript array contains an element
 and its unique and immutable identifier. An alternative is the tree-based
-structure of the LSEQ-based array is accessible at
+structure of the LSEQ-based array accessible at
 [Flood-it](https://github.com/jesuspatate/Flood.it.git).
+
+Learn more about CRDTs: [A comprehensive study of Convergent and Commutative Replicated Data Types](http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf)
+
+Learn more about LSEQ: [LSEQ: an Adaptive Structure for Sequences in Distributed Collaborative Editing](http://hal.archives-ouvertes.fr/docs/00/92/16/33/PDF/fp025-nedelec.pdf)
