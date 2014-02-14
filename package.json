@@ -16,14 +16,14 @@
 	"vector"
     ],
     "dependencies": {
-	"big-integer": "1.1.x"
+	"BigInt": "5.4.x"
     },
     "devDependencies": {
 	"expect.js":  "0.2.x",
 	"mocha":  "1.17.x"
     },
     "bundledDependencies": [
-	"big-integer"
+	"BigInt"
     ],
     "license": "MIT",
     "engines": {
