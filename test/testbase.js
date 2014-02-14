@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 var Mocha  = require('mocha');
-var bigInt = require('big-integer');
+var BI = require('BigInt');
 
 var Base = require('../lib/base.js');
 var ID = require('../lib/identifier.js');
@@ -33,34 +33,38 @@ describe('base.js', function() {
     describe('getInterval', function(){
 	it('should return an empty interval at lvl 0', function(){
 	    var base = new Base(3);
-	    var id1 = new ID(bigInt(17),[0,0],[0,0]); // [1,1]
-	    var id2 = new ID(bigInt(31),[0,0],[0,0]); // [1,15]
-	    expect(base.getInterval(id1,id2,0)).to.be.below(0);
+	    var id1 = new ID(BI.int2bigInt(17,base.getSumBit(1)),
+			     [0,0],[0,0]); // [1,1]
+	    var id2 = new ID(BI.int2bigInt(31,base.getSumBit(1)),
+			     [0,0],[0,0]); // [1,15]
+	    expect(BI.negative(base.getInterval(id1,id2,0))).to.be.eql(1);
 	});
 	
 	it('should return an interval at level 1 of 13', function(){
 	    var base = new Base(3);
-	    var id1 = new ID(bigInt(17),[0,0],[0,0]); // [1,1]
-	    var id2 = new ID(bigInt(31),[0,0],[0,0]); // [1,15]
-	    expect(base.getInterval(id1,id2,1)
-		   .compare(bigInt(13))).to.be.eql(0);
+	    var id1 = new ID(BI.int2bigInt(17,base.getSumBit(1)),
+			     [0,0],[0,0]); // [1,1]
+	    var id2 = new ID(BI.int2bigInt(31,base.getSumBit(1)),
+			     [0,0],[0,0]); // [1,15]
+	    expect(BI.equalsInt(base.getInterval(id1,id2,1),13)).to.be.ok();
 	});
 
 	it('should return an interval at level 1 of 14', function(){
 	    var base = new Base(3);
-	    var id1 = new ID(bigInt(1),[0],[0]); // [1]
-	    var id2 = new ID(bigInt(31),[0,0],[0,0]); // [1,15]
-	    expect(base.getInterval(id1,id2,1)
-		   .compare(bigInt(14))).to.be.eql(0);
+	    var id1 = new ID(BI.int2bigInt(1,base.getSumBit(0)),
+			     [0],[0]); // [1]
+	    var id2 = new ID(BI.int2bigInt(31,base.getSumBit(1)),
+			     [0,0],[0,0]); // [1,15]
+	    expect(BI.equalsInt(base.getInterval(id1,id2,1),14)).to.be.ok();
 	});
 
 	it('should return an interval at level 1 of 11', function(){
 	    var base = new Base(3);
-	    var id1 = new ID(bigInt(20),[0,0],[0,0]);
-	    // [1,4] precedes the [1,3]
-	    var id2 = new ID(bigInt(19),[0,0],[0,0]); // [1,3] 
-	    expect(base.getInterval(id1,id2,1)
-		   .compare(bigInt(11))).to.be.eql(0);
+	    var id1 = new ID(BI.int2bigInt(20,base.getSumBit(1)),
+			     [0,0],[0,0]); // [1,4] precedes the [1,3]
+	    var id2 = new ID(BI.int2bigInt(19,base.getSumBit(1)),
+			     [0,0],[0,0]); // [1,3]
+	    expect(BI.equalsInt(base.getInterval(id1,id2,1),11)).to.be.ok();
 	});
 
     });
