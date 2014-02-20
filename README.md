@@ -27,7 +27,7 @@ var ei = lseqArray.insert("A",0);
 
 // #2b inserting an element that comes from a remote insert
 // rei: a couple {_e: the element, _i: its unique identifier}
-lseqArray.applyInsert(rei);
+var index = lseqArray.applyInsert(rei);
 
 // #3a deleting the element at targeted index
 // i: the unique identifier of the element at the index
@@ -35,7 +35,7 @@ var i = lseqArray.remove(0);
 
 // #3b deleting the element with its unique identifier "ri"
 // ri: the unique identifier of the element to delete
-lseqArray.applyRemove(ri);
+var index = lseqArray.applyRemove(ri);
 
 // #4 accessing the length of the array
 var length = lseqArray.length;
