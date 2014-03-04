@@ -43,7 +43,10 @@ var length = lseqArray.length;
 
 ## Example
 
-<i>Incoming...</i>
+[SandEdit](https://github.com/Chat-Wane/SandEdit.git) is a distributed and
+decentralized collaborative editor using LSEQArray. It has an optionnal web
+front end. Thus, one can simply trigger the events of a Replica to build its
+distributed array.
 
 ## Others
 
